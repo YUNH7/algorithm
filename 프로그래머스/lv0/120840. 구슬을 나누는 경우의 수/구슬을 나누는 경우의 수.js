@@ -7,6 +7,6 @@ function fac(num) {
 }
 
 function solution(balls, share) {
-    return parseInt(fac(balls)/fac(balls-share)/fac(share))
+    return fac(balls)/fac(balls-share)/fac(share)
     
 }
