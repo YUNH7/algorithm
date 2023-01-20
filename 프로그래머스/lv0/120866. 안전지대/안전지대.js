@@ -12,18 +12,18 @@ function solution(board) {
         for (let i = 0; i < board.length; i++) {
             
             if (bomb[0] === i) {
-                board[i][bomb[1]-1] = 2
-                board[i][bomb[1]+1] = 2
+                board[i][bomb[1]-1] = 1
+                board[i][bomb[1]+1] = 1
             }
             if (bomb[0]-1 === i) {
-                board[i][bomb[1]-1] = 2
-                board[i][bomb[1]+1] = 2
-                board[i][bomb[1]] = 2
+                board[i][bomb[1]-1] = 1
+                board[i][bomb[1]+1] = 1
+                board[i][bomb[1]] = 1
             }
              if (bomb[0]+1 === i) {
-                board[i][bomb[1]-1] = 2
-                board[i][bomb[1]+1] = 2
-                board[i][bomb[1]] = 2
+                board[i][bomb[1]-1] = 1
+                board[i][bomb[1]+1] = 1
+                board[i][bomb[1]] = 1
             }
             
         }
