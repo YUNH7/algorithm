@@ -8,7 +8,7 @@ function solution(n) {
     function aux () {
         if (answer % 3 === 0 || String(answer).includes('3')) {
             answer++
-            aux(answer)
+            aux()
         } 
     }
     
