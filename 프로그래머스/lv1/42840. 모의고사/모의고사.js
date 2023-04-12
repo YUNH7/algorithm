@@ -9,6 +9,6 @@ function solution(answers) {
         if (answers[i] === two[i%two.length]) result[1]++
         if (answers[i] === three[i%three.length]) result[2]++
     }
-    const max = result.reduce((a,c) => a > c ? a : c, 0)
+    const max = Math.max(...result)
     return result.map((el,i) => el === max ? i+1 : 0).filter(el => el !== 0)
 }
