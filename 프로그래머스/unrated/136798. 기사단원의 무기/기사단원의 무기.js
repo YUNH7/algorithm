@@ -10,7 +10,7 @@ function solution(number, limit, power) { // 기사단 번호, 제한수치, 제
 function devidedCnt(num, limit) {
     let result = 0 // 개수
     for (let i = 1; i < Math.sqrt(num); i++) {
-        if (result*2 > limit) break
+        // if (result*2 > limit) break
         if (num % i === 0) result++
     }
     return Number.isInteger(Math.sqrt(num)) ? result * 2 + 1 : result * 2
