@@ -1,5 +1,4 @@
 function solution(board, moves) {    
-    // 같은 모양의 인형 두 개를 연속해서 쌓으면 바구니에서 없어짐
     const sortBoard = board.reduce((newArr, dollArr) => {
         dollArr.forEach((doll, idx) => doll !== 0 && newArr[idx].push(doll))
         return newArr
@@ -13,7 +12,7 @@ function solution(board, moves) {
         if (doll && bucket[bucket.length - 1] === doll) {
             result+=2
             bucket.pop()
-        } else if (doll !== undefined) {
+        } else {
             bucket.push(doll)
         }
     })
