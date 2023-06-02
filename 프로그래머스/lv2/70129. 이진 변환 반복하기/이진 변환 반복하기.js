@@ -5,9 +5,11 @@ function solution(s) {
     while(s !== '1') {
         repeat++
         
-        let len = s.length
-        let slen = s.replace(/0/g,'').length;
-        zero += len - slen
+        let slen = s.replace(/0/g,() => {
+            zero++
+            return ''
+        }).length;
+        
         s = slen.toString(2)
     }
     return [repeat, zero]
