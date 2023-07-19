@@ -2,7 +2,7 @@ function solution(s) {
     if (s.length % 2) return 0
     
     const bracket = {'(':')', '[':']', '{':'}'}
-    const aux = (s) => {
+    const checkCorrect = (s) => {
         let cnt = 0
         const stack = []
         for (let i = 0; i < s.length; i++) {
@@ -20,9 +20,8 @@ function solution(s) {
     const lastIdx = s.length - 1 
     for (let i = 0; i <= lastIdx; i++) {
         s = s.slice(1) + s.slice(0, 1)
-        if (bracket[s[0]] && !bracket[s[lastIdx]]) {
-            const cnt = aux(s)
-            if (max < cnt) max = cnt
+        if (bracket[s[0]] && !bracket[s[lastIdx]]) {           
+            max = checkCorrect(s) || max
         }
     }
     return max
