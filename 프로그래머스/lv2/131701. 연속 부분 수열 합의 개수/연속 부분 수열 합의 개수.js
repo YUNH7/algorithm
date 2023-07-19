@@ -1,12 +1,13 @@
 function solution(elements) {
     const copyTwice = elements.concat(elements)
-    const sumMap = new Map()
-    for (let addN = 0; addN < elements.length; addN++) {
-        for (let i = 0; i < elements.length; i++) {
-            const sum = copyTwice.slice(i, i+addN+1).reduce((a, c) => a + c)
-            sumMap.set(sum, true)
+    const sumSet = new Set()
+    for (let i = 0; i < elements.length; i++) {
+        let sum = 0
+        for (let addN = 0; addN < elements.length; addN++) {
+            sum += copyTwice[i+addN]
+            sumSet.add(sum)
         }
     }
     
-    return sumMap.size
+    return sumSet.size
 }
