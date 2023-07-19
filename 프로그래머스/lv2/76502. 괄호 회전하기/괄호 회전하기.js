@@ -18,11 +18,11 @@ function solution(s) {
     
     const lastIdx = s.length - 1 
     for (let i = 0; i <= lastIdx; i++) {
-        s = s.slice(1) + s.slice(0, 1)
         if (bracket[s[0]] && !bracket[s[lastIdx]]) {           
             const max = checkCorrect(s)
             if (max) return max
         }
+        s = s.slice(1) + s.slice(0, 1)
     }
     
     return 0
