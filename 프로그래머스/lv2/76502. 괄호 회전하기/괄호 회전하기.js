@@ -16,13 +16,14 @@ function solution(s) {
         return stack.length ? 0 : cnt
     }
     
-    let max = 0
     const lastIdx = s.length - 1 
     for (let i = 0; i <= lastIdx; i++) {
         s = s.slice(1) + s.slice(0, 1)
         if (bracket[s[0]] && !bracket[s[lastIdx]]) {           
-            max = checkCorrect(s) || max
+            const max = checkCorrect(s)
+            if (max) return max
         }
     }
-    return max
+    
+    return 0
 }
