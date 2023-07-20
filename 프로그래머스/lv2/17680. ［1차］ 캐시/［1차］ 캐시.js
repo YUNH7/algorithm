@@ -1,19 +1,19 @@
 function solution(cacheSize, cities) {
     if (cacheSize === 0) return cities.length * 5
     
-    const stack = []
+    const queue = []
     let result = 0
     for (let i = 0; i < cities.length; i++) {
         const formatCity = cities[i].toLowerCase()        
-        const idx = stack.indexOf(formatCity)
+        const idx = queue.indexOf(formatCity)
         if (idx === -1) {
             result += 5
         } else {
             result++
-            stack.splice(idx,1)
+            queue.splice(idx,1)
         }
-        stack.push(formatCity)
-        if (stack.length > cacheSize) stack.shift()
+        queue.push(formatCity)
+        if (queue.length > cacheSize) queue.shift()
     }
     
     return result
