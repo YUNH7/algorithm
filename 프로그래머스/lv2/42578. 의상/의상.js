@@ -1,11 +1,11 @@
 function solution(clothes) {
-    const closet = new Map()
+    const closet = {}
     for (let [_, type] of clothes) {
-        closet.set(type, (closet.get(type) || 0) + 1)
+        closet[type] = (closet[type] || 0) + 1
     }
     
     let result = 1
-    for (let [_, cnt] of closet) result *= (cnt+1)
+    for (let type in closet) result *= (closet[type] + 1)
     return result - 1
 
 }
