@@ -1,5 +1,5 @@
 function solution(phone_book) {
-    const book = phone_book.map(phone_number => phone_number.replace(/[^\d]/g, '')).sort()
+    const book = phone_book.sort()
     for (let i = 0; i < book.length - 1; i++) {
         const number = book[i]
         const next = book[i+1]
