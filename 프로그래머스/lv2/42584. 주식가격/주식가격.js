@@ -1,15 +1,11 @@
 function solution(prices) {
-    const result = []
-    
-    for (let i = 0; i < prices.length - 1; i++) {
-        let cnt = 0
-        const price = prices[i]
-        for (let j = i+1; j < prices.length; j++) {
-            cnt++
+    return prices.map((price, i) => {
+        if (i === prices.length - 1) return 0
+        let sec = 0
+        for (let j = i + 1; j < prices.length; j++) {
+            sec++
             if (price > prices[j]) break
         }
-        result.push(cnt)
-    }
-    result.push(0)
-    return result
+        return sec
+    })
 }
