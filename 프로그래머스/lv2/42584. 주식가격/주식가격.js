@@ -8,7 +8,7 @@ function solution(prices) {
             cnt++
             if (price > prices[j]) break
         }
-        result.push(cnt || 1)
+        result.push(cnt)
     }
     result.push(0)
     return result
