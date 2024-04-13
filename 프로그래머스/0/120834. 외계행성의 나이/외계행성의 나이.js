@@ -1,4 +1,4 @@
 function solution(age) {
-    const ageArr = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    const ageArr = 'abcdefghij'.split('');
     return String(age).split('').map(n => ageArr[n]).join('');
 }
