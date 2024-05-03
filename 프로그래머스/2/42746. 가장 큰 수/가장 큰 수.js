@@ -8,18 +8,12 @@ function solution(numbers) {
     }, {});
     
     const secondSort = Object.entries(firstSort).map(([num, arr]) => {
-        if (arr.length > 1) {
-            arr.sort((a,b) => {
-                const valA = a + b;
-                const valB = b + a;
-                return +valA - +valB > 0 ? -1 : 1;
-            })
-        }
-        return [+num, arr]
+        if (arr.length > 1) arr.sort((a,b) => +(a + b) - +(b + a) > 0 ? -1 : 1);
+        return [+num, arr];
     })
     
-    secondSort.sort((a, b) => b[0] - a[0]);
-    
     if (secondSort.length === 1 && secondSort[0][0] === 0) return '0';
+    
+    secondSort.sort((a, b) => b[0] - a[0]);
     return secondSort.reduce((acc, [_, sortedArr]) => acc + sortedArr.join(''), '');
 }
