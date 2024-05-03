@@ -6,6 +6,4 @@ function solution(arr) {
         : row > column 
         ? arr.map(el => el.concat(new Array(row - column).fill(0)))
         : arr.concat(new Array(column - row).fill(new Array(column).fill(0)));
-    
-    
 }
