@@ -1,9 +1,7 @@
 function solution(a, b, n) {
-    let result = 0;
-    while (n >= a) {
-        let newCoke = Math.floor(n / a) * b;
-        result += newCoke;
-        n = n % a + newCoke;
-    } 
-    return result;
+    return (function aux(startCoke, result) {
+        if (startCoke < a) return result;
+        const newCoke = Math.floor(startCoke / a) * b;
+        return aux(startCoke % a + newCoke, result + newCoke)
+    })(n, 0)
 }
