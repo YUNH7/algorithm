@@ -12,6 +12,7 @@ function solution(n, works) {
         
         const prev = cur-1;
         if (prev > 0) worksMap.set(prev, (worksMap.get(prev) || 0) + (dif >= 0 ? curVal : n));
+        
         n -= curVal;
     }
     
