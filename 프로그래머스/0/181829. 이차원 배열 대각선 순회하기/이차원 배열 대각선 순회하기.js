@@ -1,8 +1,3 @@
 function solution(board, k) {
-    return board.reduce((acc, cur, i) => {
-        cur.forEach((el, j) => {
-            if (i + j <= k) acc += el
-        });
-        return acc;
-    }, 0)
+    return board.reduce((acc, arr, i) => arr.reduce((a, el, j) => i + j <= k ? a += el : a, acc), 0)
 }
