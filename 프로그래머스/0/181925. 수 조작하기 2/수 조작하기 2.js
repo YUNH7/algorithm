@@ -1,11 +1,4 @@
-const check = {
-    w: (n, result) => n + 1 === result,
-    s: (n, result) => n - 1 === result,
-    d: (n, result) => n + 10 === result,
-    a: (n, result) => n - 10 === result,
-    
-}
-
 function solution(numLog) {
-    return numLog.reduce((acc, cur, i) => acc + (Object.keys(check).find(key => check[key](cur, numLog[i+1])) || ''), '')
+    const dir = { 1: 'w', '-1': 's', 10: 'd', '-10': 'a' };
+    return numLog.slice(1).reduce((a, c, i) => a += dir[c - numLog[i]], '');
 }
