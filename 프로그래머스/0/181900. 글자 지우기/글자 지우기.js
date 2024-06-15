@@ -1,3 +1,3 @@
 function solution(my_string, indices) {
-    return [...my_string].filter((c, i) => !indices.includes(i)).join('');
+    return [...my_string].filter((_, i) => !indices.includes(i)).join('');
 }
