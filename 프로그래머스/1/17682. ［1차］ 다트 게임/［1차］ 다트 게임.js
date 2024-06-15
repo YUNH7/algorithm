@@ -7,9 +7,9 @@ function solution(dartResult) {
         '#': n => n * -1,
         undefined: n => n
     }
-    return dartResult.match(/\d+\D[\*#]*/g).reduce((a, c, i, arr) => {
+    return dartResult.match(/\d+\D+/g).reduce((a, c, i, arr) => {
         const [score, area, award] = c.match(/\d+|\D|\*|#/g);
-        const nextAward = /\*/g.test(arr[i+1]) ? '*' : undefined;
+        const nextAward = arr[i+1]?.includes('*') ? '*': undefined;
         const curScore = calcScore[nextAward](calcScore[award](calcScore[area](+score)));
         return a + curScore;
     }, 0)
