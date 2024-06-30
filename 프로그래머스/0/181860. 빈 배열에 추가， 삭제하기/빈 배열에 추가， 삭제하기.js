@@ -1,6 +1,6 @@
 function solution(arr, flag) {
-    return flag.reduce((acc, boolean, i) => boolean 
-            ? acc.concat(new Array(arr[i]*2).fill(arr[i])) 
-            : acc.slice(0, -arr[i])
-            , []);
+    return arr.reduce((acc, el, i) => {
+        if (flag[i]) return [...acc, ...new Array(el * 2).fill(el)];
+        return acc.slice(0, -el);
+    }, []);
 }
