@@ -13,5 +13,5 @@ const numObj = {
 
 function solution(s) {
     const regExp = new RegExp(`(${Object.keys(numObj).join('|')})`, 'g');
-    return +s.replace(regExp, (num) => numObj[num] ?? num);
+    return +s.replace(regExp, (num) => numObj[num]);
 }
