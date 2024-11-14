@@ -3,7 +3,7 @@ function solution(N, stages) {
             a[c-1]++;
             return a;
         }, new Array(N+1).fill(0));
-    const players = blocked.map((b, i, arr) => ({rate: b / arr.slice(i).reduce((a, c) => a+c), i}));
+    const players = blocked.map((b, i, arr) => ({rate: b === 0 ? 0 : b / arr.slice(i).reduce((a, c) => a+c), i}));
     players.pop();
     
     return players
