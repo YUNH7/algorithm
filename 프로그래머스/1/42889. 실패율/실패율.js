@@ -1,9 +1,12 @@
 function solution(N, stages) {
-    const base = new Array(N+1).fill(0);
-    stages.forEach(stage => base[stage-1]++);
+    const blocked = stages.reduce((a, c) => {
+            a[c-1]++;
+            return a;
+        }, new Array(N+1).fill(0));
+    const players = blocked.map((b, i, arr) => ({rate: b / arr.slice(i).reduce((a, c) => a+c), i}));
+    players.pop();
     
-    const failure = base.map((cnt, i) => [i+1, cnt === 0 ? 0 : cnt / base.slice(i).reduce((a, c) => a+c, 0)]);
-    failure.pop();
-    
-    return failure.sort((a,b) => b[1] - a[1]).map(el => el[0]);
+    return players
+        .sort((a, b) => b.rate - a.rate)
+        .map(el => el.i + 1);
 }
