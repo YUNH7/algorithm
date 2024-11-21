@@ -1,18 +1,18 @@
 function solution(prices) {
-    const result = new Array(prices.length).fill(0);
     const len = prices.length;
+    const result = new Array(len).fill(0);
     
     const stack = [0];
-    let i = 1;
-    while (i !== len) {
-        const idx = stack.pop() ?? i;
-        if (idx === i) i += 1;
-        
-        if (prices[idx] <= prices[i]) {
-            stack.push(idx);
-            stack.push(i);
-            i++;
-        } else result[idx] = i - idx;
+    let now = 1;
+    while (now !== len) {
+        const prev = stack.at(-1) ?? now;        
+        if (prices[prev] <= prices[now]) {
+            stack.push(now);
+            now += 1;
+        } else {
+            stack.pop();
+            result[prev] = now - prev;
+        }
     }
-    return result.map((sec, i) => sec === 0 ? len-1-i: sec);
+    return result.map((sec, i) => sec || len-i-1);
 }
