@@ -1,9 +1,9 @@
 function solution(cards1, cards2, goal) {
-    return goal.reduce((a, c) => {
-        if (cards1[0] === c) cards1.shift();
-        else if (cards2[0] === c) cards2.shift();
+    let firstIdx = 0, secondIdx = 0;
+    for (let word of goal) {
+        if (word === cards1[firstIdx]) firstIdx++;
+        else if (word === cards2[secondIdx]) secondIdx++;
         else return 'No';
-        
-        return a;
-    }, 'Yes')
+    }
+    return 'Yes';
 }
