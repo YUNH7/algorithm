@@ -1,5 +1,11 @@
 function solution(participant, completion) {
-    participant.sort();
-    completion.sort();
-    return participant.find((el, i) => el !== completion[i]);
+    const finish = completion.reduce((a, c) => {
+        a[c] = (a[c] || 0) + 1;
+        return a;
+    }, {});
+    
+    for (let name of participant) {
+        if (!finish[name]) return name;
+        finish[name] -= 1;
+    }
 }
