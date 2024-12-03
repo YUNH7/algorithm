@@ -1,21 +1,27 @@
-function solution(want, number, discount) {
-    const exceptArr = discount.reduce((a, c, i) => {
-        if (!want.includes(c)) a.push(i);
-        return a;
-    }, []);
-    exceptArr[-1] = -1;
-    exceptArr.push(discount.length);
-    const fruits = want.reduce((a, c, i) => {
-        a[c] = number[i];
+function solution(w, n, list) {
+    let total = 0;
+    const want = w.reduce((a, el, idx) => {
+        a[el] = n[idx];
+        total += n[idx];
         return a;
     }, {});
-    return exceptArr.reduce((acc, idx, i, arr) => {
-        for (let j = arr[i-1] + 1; j + 10 <= idx; j++) {
-            const list = discount.slice(j, j+10).reduce((a, c) => {
-                a[c] = (a[c] || 0) + 1;
-                return a;
-            }, {});
-            if (Object.entries(list).every(([key, num]) => num === fruits[key])) acc++
+    
+    const queue = list.reduce((a, c, i) => {
+        if (!w.includes(c)) a.push(i);
+        return a;
+    }, [-1]);
+    
+    return queue.reduce((acc, idx, i, a) => {
+        const arr = list.slice(idx+1, a[i+1] ?? list.length);
+        if (arr.length >= total) {
+            const obj = Object.fromEntries(w.map(el => [el, 0]));
+            for (let j = 0; j < arr.length; j++) {
+                obj[arr[j]] += 1;
+                if (j >= total - 1) {
+                    if (Object.entries(obj).every(([el, num]) => num === want[el])) acc += 1;
+                    obj[arr[j - total + 1]] -= 1;
+                }
+            }
         }
         return acc;
     }, 0);
