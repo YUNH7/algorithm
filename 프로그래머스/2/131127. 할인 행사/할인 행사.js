@@ -1,8 +1,7 @@
 function solution(w, n, list) {
-    let total = 0;
+    const total = 10;
     const want = w.reduce((a, el, idx) => {
         a[el] = n[idx];
-        total += n[idx];
         return a;
     }, {});
     
