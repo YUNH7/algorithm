@@ -9,7 +9,6 @@ function solution(genres, plays) {
         .sort((a, b) => b.plays - a.plays)
         .map(({nums}) => nums
              .sort((a, b) => plays[b] === plays[a] ? a - b : plays[b] - plays[a])
-             .slice(0, 2)
-             .map((i) => +i))
+             .slice(0, 2))
         .flat();
 }
