@@ -1,11 +1,10 @@
 function solution(n, wires) {
-    const tree = wires.reduce((a, [p, c]) => {
-        if (!a[p]) a[p] = [];
-        if (!a[c]) a[c] = [];
-        a[p].push(c);
-        a[c].push(p);
-        return a;
-    }, {});
+    const tree = new Array(n+1).fill(0).map(() => []);
+    wires.forEach(([p, c]) => {
+        tree[p].push(c);
+        tree[c].push(p);        
+    });
+
     const result = {};
     const size = new Set();
     const aux = (node, p) => {
