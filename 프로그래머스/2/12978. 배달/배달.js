@@ -6,10 +6,11 @@ function solution(N, road, K) {
         }
         return a;
     }, new Array(N+1).fill(0).map(() => new Array(N+1).fill(0)));
+    console.log(map)
     const flag = map[1].map(el => el <= K ? el : 0);
     
     const queue = [1];
-    while (queue.length && flag.slice(1).some((el) => !el)) {
+    while (queue.length) {
         const before = queue.shift();
         const beforeTime = flag[before];
         for (let i = 2; i < map[before].length; i++) {
